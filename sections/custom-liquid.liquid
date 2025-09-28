@@ -12,46 +12,22 @@
 
 <style>
   .a-plus-welcome{--pad:clamp(18px,3vw,36px); --radius:18px}
-
-  /* 画面いっぱい＆必ず高さが出るようにガード */
   .a-plus-hero{
-    position:relative;
-    /* 60vh を最低ラインにしつつ、ヘッダー差し引きの100vh と大きい方を採用 */
-    min-height: max(60vh, calc(100vh - 140px));
-    display:grid;place-items:center;
-    padding:var(--pad);
-
-    /* フルブリード（親の page-width を突破） */
-    width:100vw;
-    margin-left:calc(50% - 50vw);
-    margin-right:calc(50% - 50vw);
-
-    /* まれに親の overflow が干渉するテーマがあるので明示 */
-    overflow:clip;
+    position:relative;min-height:calc(100vh - 140px);
+    display:grid;place-items:center;padding:var(--pad)
   }
-
   .a-plus-hero__bg{
-    position:absolute;inset:0;
-    background-size:cover;background-position:center;
-    background-repeat:no-repeat;
-    transform:translateZ(0);
-    z-index:0; /* 一番下：背景 */
+    position:absolute;inset:0;background-size:cover;background-position:center;transform:translateZ(0)
   }
-  .a-plus-hero__overlay{
-    position:absolute;inset:0;
-    z-index:1; /* 中間：暗幕 */
-    pointer-events:none;
-  }
+  .a-plus-hero__overlay{position:absolute;inset:0}
   .a-plus-hero__inner{
-    position:relative;z-index:2; /* 最前面：テキスト/フォーム */
-    color:#fff;text-align:center;
+    position:relative;z-index:1;color:#fff;text-align:center;
     max-width:min(900px,92vw);padding:clamp(16px,2.5vw,28px);
     backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
     background:rgba(0,0,0,0.22);
     border:1px solid rgba(255,255,255,.12); border-radius:var(--radius);
     box-shadow:0 10px 30px rgba(0,0,0,.25);
   }
-
   .a-plus-kicker{letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;opacity:.85;margin:0 0 .4rem}
   .a-plus-title{font-size:clamp(22px,4.6vw,42px);line-height:1.2;margin:.2rem 0 .6rem;font-weight:700}
   .a-plus-body{font-size:clamp(14px,2.2vw,18px);line-height:1.8;opacity:.95;margin:0 auto 1rem}
@@ -84,6 +60,20 @@
     {%- else -%}
       <div class="a-plus-hero__bg" style="background:linear-gradient(135deg,#0e0e0e,#1c1c1c);"></div>
     {%- endif -%}
+
+{%- assign APLUS_BG_FILENAME = '186151471710da20014a7de77d7e3230.jpg' -%}
+{%- assign APLUS_OVERLAY_OPACITY = 0.45 -%}
+
+{%- if APLUS_BG_FILENAME != blank -%}
+  {%- assign APLUS_BG = APLUS_BG_FILENAME | file_url -%}
+{%- else -%}
+  {%- assign APLUS_BG = '' -%}
+{%- endif -%}
+
+<div class="a-plus-hero__bg" style="background-image:url('{{ APLUS_BG }}');"></div>
+
+<img width="100vh" height="200" src="{{ APLUS_BG_FILENAME | file_url }}" alt="">
+
 
     <div class="a-plus-hero__inner">
       <p class="a-plus-kicker">COMING SOON</p>
