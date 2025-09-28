@@ -61,14 +61,19 @@
       <div class="a-plus-hero__bg" style="background:linear-gradient(135deg,#0e0e0e,#1c1c1c);"></div>
     {%- endif -%}
 
-    {%- assign APLUS_BG_ASSET = '186151471710da20014a7de77d7e3230.jpg' -%}
+{%- assign APLUS_BG_FILENAME = '186151471710da20014a7de77d7e3230.jpg' -%}
 {%- assign APLUS_OVERLAY_OPACITY = 0.45 -%}
 
-{%- if APLUS_BG_ASSET != blank -%}
-  {%- assign APLUS_BG = APLUS_BG_ASSET | asset_url -%}
+{%- if APLUS_BG_FILENAME != blank -%}
+  {%- assign APLUS_BG = APLUS_BG_FILENAME | file_url -%}
 {%- else -%}
   {%- assign APLUS_BG = '' -%}
 {%- endif -%}
+
+<div class="a-plus-hero__bg" style="background-image:url('{{ APLUS_BG }}');"></div>
+
+<img width="200" height="200" src="{{ APLUS_BG_FILENAME | file_url }}" alt="">
+
 
     <div class="a-plus-hero__inner">
       <p class="a-plus-kicker">COMING SOON</p>
