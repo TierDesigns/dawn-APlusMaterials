@@ -13,28 +13,34 @@
 <style>
   .a-plus-welcome{--pad:clamp(18px,3vw,36px); --radius:18px}
 
-  /* 画面いっぱいに広げる（親の page-width 制限を突破） */
+  /* 画面いっぱい＆必ず高さが出るようにガード */
   .a-plus-hero{
     position:relative;
-    min-height:calc(100vh - 140px);
+    /* 60vh を最低ラインにしつつ、ヘッダー差し引きの100vh と大きい方を採用 */
+    min-height: max(60vh, calc(100vh - 140px));
     display:grid;place-items:center;
     padding:var(--pad);
 
-    /* フルブリード化のキモ */
+    /* フルブリード（親の page-width を突破） */
     width:100vw;
     margin-left:calc(50% - 50vw);
     margin-right:calc(50% - 50vw);
+
+    /* まれに親の overflow が干渉するテーマがあるので明示 */
+    overflow:clip;
   }
 
   .a-plus-hero__bg{
     position:absolute;inset:0;
     background-size:cover;background-position:center;
+    background-repeat:no-repeat;
     transform:translateZ(0);
     z-index:0; /* 一番下：背景 */
   }
   .a-plus-hero__overlay{
     position:absolute;inset:0;
     z-index:1; /* 中間：暗幕 */
+    pointer-events:none;
   }
   .a-plus-hero__inner{
     position:relative;z-index:2; /* 最前面：テキスト/フォーム */
@@ -78,8 +84,6 @@
     {%- else -%}
       <div class="a-plus-hero__bg" style="background:linear-gradient(135deg,#0e0e0e,#1c1c1c);"></div>
     {%- endif -%}
-
-    <!-- ※A方式に統一：file_url の再代入やテスト用 <img> は削除 -->
 
     <div class="a-plus-hero__inner">
       <p class="a-plus-kicker">COMING SOON</p>
