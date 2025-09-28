@@ -61,7 +61,7 @@
       <div class="a-plus-hero__bg" style="background:linear-gradient(135deg,#0e0e0e,#1c1c1c);"></div>
     {%- endif -%}
 
-    <div class="banner__media{% if section.settings.image != blank %} media{% endif %}">
+
       {%- if section.settings.image != blank -%}
         <img
           srcset="
@@ -86,7 +86,7 @@
         {{- 'email-signup-banner-background.svg' | inline_asset_content -}}
         {{- 'email-signup-banner-background-mobile.svg' | inline_asset_content -}}
       {%- endif -%}
-    </div>
+
 
     <div class="a-plus-hero__inner">
       <p class="a-plus-kicker">COMING SOON</p>
