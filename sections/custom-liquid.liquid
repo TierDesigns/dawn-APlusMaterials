@@ -1,6 +1,6 @@
-{%- assign APLUS_BG_ASSET = 'bg-carbon.jpg' -%}  {# Assets内の画像ファイル名（例: bg-carbon.jpg） #}
-{%- assign APLUS_BG_URL   = '' -%}                {# 外部URLで使いたい場合だけ入力。空なら無視 #}
-{%- assign APLUS_OVERLAY_OPACITY = 0.45 -%}       {# 背景の暗さ 0〜0.8 推奨 #}
+{%- assign APLUS_BG_ASSET = 'bg-carbon.jpg' -%}
+{%- assign APLUS_BG_URL   = '' -%}
+{%- assign APLUS_OVERLAY_OPACITY = 0.45 -%}
 
 {%- if APLUS_BG_ASSET != blank -%}
   {%- assign APLUS_BG = APLUS_BG_ASSET | asset_url -%}
