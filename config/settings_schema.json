@@ -30,6 +30,12 @@
         "id": "favicon",
         "label": "t:settings_schema.logo.settings.favicon.label",
         "info": "t:settings_schema.logo.settings.favicon.info"
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon_dark",
+        "label": "Dark mode favicon",
+        "info": "Shown when the visitor prefers a dark color scheme."
       }
     ]
   },
